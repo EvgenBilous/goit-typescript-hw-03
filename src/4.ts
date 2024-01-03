@@ -23,9 +23,9 @@ class Person {
 }
 
 abstract class House {
-  abstract door: boolean;
-  abstract key: Key;
-  abstract tenants: Person[];
+  door: boolean = false;
+  key: Key;
+  tenants: String[];
 
   comeIn(person) {
     if (this.door) {
@@ -37,9 +37,7 @@ abstract class House {
 }
 
 class MyHouse extends House {
-  door: boolean = false;
   key: Key;
-  tenants: Person[] = [];
 
   constructor(key) {
     super();
@@ -49,6 +47,9 @@ class MyHouse extends House {
   openDoor(key) {
     if (key.getSignature() === this.key.getSignature()) {
       this.door = true;
+      console.log('The door is now open!');
+    } else {
+      console.log('The key does not match. The door remains closed.');
     }
   }
 }
